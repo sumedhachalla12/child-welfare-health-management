@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>View Child Records</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.table-container{
+    width:95%;
+    margin:30px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#2196F3;
+    color:white;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 20px;
+    background:#2196F3;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="table-container">
+
+<h1>Child Welfare Health Management Platform</h1>
+
+<h2>Child Records</h2>
+
+<table id="childTable">
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+<th>DOB</th>
+<th>Gender</th>
+<th>Guardian</th>
+<th>Height</th>
+<th>Weight</th>
+<th>Temperature</th>
+<th>Blood Pressure</th>
+<th>Pulse</th>
+<th>SPO₂</th>
+<th>Complaint</th>
+<th>Prescription</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+<button onclick="window.location.href='dashboard.html'">
+
+Back to Dashboard
+
+</button>
+
+</div>
+
+<script>
+
+const children = JSON.parse(localStorage.getItem("children")) || [];
+
+const tbody = document.querySelector("#childTable tbody");
+
+children.forEach(function(child){
+
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>${child.name}</td>
+        <td>${child.dob}</td>
+        <td>${child.gender}</td>
+        <td>${child.guardian}</td>
+        <td>${child.height}</td>
+        <td>${child.weight}</td>
+        <td>${child.temperature}</td>
+        <td>${child.bp}</td>
+        <td>${child.pulse}</td>
+        <td>${child.spo2}</td>
+        <td>${child.complaint}</td>
+        <td>${child.prescription}</td>
+    `;
+
+    tbody.appendChild(row);
+
+});
+
+</script>
+
+</body>
+</html>
